@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "402058661506",
+    "firebase_url": "https://my-project-ea865-default-rtdb.firebaseio.com",
+    "project_id": "my-project-ea865",
+    "storage_bucket": "my-project-ea865.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402058661506:android:d7e2fc01029f447c4a6e9b",
+        "android_client_info": {
+          "package_name": "com.ahmed.store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGPSSxnfVZLyv_DFpJWpdVqcrY8kQ2Yyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,58 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+
+    "products": {
+      ".read": true,
+      "$id": {
+        ".write": "auth != null || (data.exists() && newData.exists() && newData.child('price').val() === data.child('price').val() && newData.child('name').val() === data.child('name').val() && newData.child('oldPrice').val() === data.child('oldPrice').val())"
+      }
+    },
+    "categories": { ".read": true },
+    "coupons":    { ".read": true },
+    "settings":   { ".read": true },
+
+    "ratings": {
+      ".read": true,
+      "$id": {
+        ".write": "newData.child('count').isNumber() && newData.child('sum').isNumber() && newData.child('count').val() >= (data.exists() ? data.child('count').val() : 0) && newData.child('count').val() <= (data.exists() ? data.child('count').val() : 0) + 1"
+      }
+    },
+    "reviews": {
+      "$id": {
+        ".read": true,
+        "$rid": {
+          ".write": "auth != null || (!data.exists() && newData.child('name').isString() && newData.child('name').val().length <= 30 && newData.child('rating').isNumber() && newData.child('rating').val() >= 1 && newData.child('rating').val() <= 5 && (!newData.child('text').exists() || newData.child('text').val().length <= 300))"
+        }
+      }
+    },
+
+    "orders": {
+      "$id": {
+        ".write": "auth != null || (!data.exists() && newData.child('phone').isString())"
+      }
+    },
+    "tracking": {
+      "$code": {
+        ".read": true,
+        ".write": "auth != null || !data.exists() || (newData.child('status').val() === data.child('status').val() && newData.child('orderNo').val() === data.child('orderNo').val())"
+      }
+    },
+    "notify": {
+      "$pid": {
+        "$k": {
+          ".write": "auth != null || !data.exists()"
+        }
+      }
+    },
+    "couponUses": {
+      "$code": {
+        "$phone": {
+          ".read": true,
+          ".write": "auth != null || !data.exists()"
+        }
+      }
+    }
+  }
+}
